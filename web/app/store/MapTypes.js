@@ -20,6 +20,15 @@ Ext.define('Traccar.store.MapTypes', {
     fields: ['key', 'name'],
 
     data: [{
+        key: 'osroad',
+        name: Strings.mapOsroad
+    }, {
+        key: 'osoutdoor',
+        name: Strings.mapOsoutdoor
+    }, {
+        key: 'osleisure',
+        name: Strings.mapOsleisure
+    }, {
         key: 'locationIqStreets',
         name: Strings.mapLocationIqStreets
     }, {

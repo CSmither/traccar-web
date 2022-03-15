@@ -14,6 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+import { LatLon } from 'https://cdn.jsdelivr.net/npm/geodesy@2/osgridref.js';
 
 Ext.define('Traccar.view.map.BaseMap', {
     extend: 'Ext.panel.Panel',
@@ -36,7 +37,7 @@ Ext.define('Traccar.view.map.BaseMap', {
 
         type = Traccar.app.getPreference('map', null);
         bingKey = server.get('bingKey');
-		oskey = server.get('osKey');
+        oskey = server.get('osKey');
         locationIqKey = Traccar.app.getAttributePreference('locationIqKey', 'pk.0f147952a41c555a5b70614039fd148b');
 
         layer = new ol.layer.Group({
@@ -48,11 +49,11 @@ Ext.define('Traccar.view.map.BaseMap', {
                     visible: type === 'osleisure',
                     source: new ol.source.XYZ({
                         url: 'https://api.os.uk/maps/raster/v1/zxy/Leisure_27700/{z}/{x}/{y}.png?key=' + oskey,
-						projection: 'EPSG:27700',
-						tileGrid: new ol.tilegrid.TileGrid({
-							resolutions: [ 896.0, 448.0, 224.0, 112.0, 56.0, 28.0, 14.0, 7.0, 3.5, 1.75 ],
-							origin: [ -238375.0, 1376256.0 ]
-                        }),						
+                        projection: 'EPSG:27700',
+                        tileGrid: new ol.tilegrid.TileGrid({
+                            resolutions: [896.0, 448.0, 224.0, 112.0, 56.0, 28.0, 14.0, 7.0, 3.5, 1.75],
+                            origin: [-238375.0, 1376256.0]
+                        }),
                         attributions: '&copy; <a href="https://osmaps.ordnancesurvey.co.uk/">Ordnance Survey Leisure_27700</a>'
                     })
                 }),
@@ -64,7 +65,7 @@ Ext.define('Traccar.view.map.BaseMap', {
                         url: 'https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=' + oskey,
                         projection: 'EPSG:3857',
                         attributions: '&copy; <a href="https://osmaps.ordnancesurvey.co.uk/">Ordnance Survey Outdoor_38570</a>'
-					})
+                    })
                 }),
                 new ol.layer.Tile({
                     title: Strings.mapOsroad,
@@ -205,10 +206,45 @@ Ext.define('Traccar.view.map.BaseMap', {
             maxZoom: maxZoom
         });
 
+        /**
+         * Create an overlay to anchor the popup to the map.
+         */
+        const overlay = new Overlay({
+            element: container,
+            autoPan: {
+                animation: {
+                    duration: 250,
+                },
+            },
+        });
+
+        /**
+         * Add a click handler to hide the popup.
+         * @return {boolean} Don't follow the href.
+         */
+        closer.onclick = function () {
+            overlay.setPosition(undefined);
+            closer.blur();
+            return false;
+        };
+
         this.map = new ol.Map({
             target: this.body.dom.id,
             layers: [layer],
+            overlays: [overlay],
             view: this.mapView
+        });
+
+        /**
+         * Add a click handler to the map to render the popup.
+         */
+        this.map.on('singleclick', function (evt) {
+          const coordinate = evt.coordinate;
+          const hdms = coordinate;
+          const wgs84 = new LatLon(...coordinate);
+          const gridref=wgs84.toOsGrid().toString(); // 'TL 44982 57869'
+          content.innerHTML = '<code>' + gridref + '</code>';
+          overlay.setPosition(coordinate);
         });
 
         poiLayer = Traccar.app.getPreference('poiLayer', null);
@@ -288,7 +324,7 @@ Ext.define('Traccar.view.map.BaseMap', {
 }, function () {
     var projection;
     proj4.defs('EPSG:3395', '+proj=merc +lon_0=0 +k=1 +x_0=0 +y_0=0 +datum=WGS84 +units=m +no_defs');
-    proj4.defs('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs');	
+    proj4.defs('EPSG:27700', '+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy +towgs84=446.448,-125.157,542.06,0.15,0.247,0.842,-20.489 +units=m +no_defs');
     ol.proj.proj4.register(proj4);
     projection = ol.proj.get('EPSG:3395');
     if (projection) {

@@ -14,7 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-import { LatLon } from 'https://cdn.jsdelivr.net/npm/geodesy@2/osgridref.js';
 
 Ext.define('Traccar.view.map.BaseMap', {
     extend: 'Ext.panel.Panel',

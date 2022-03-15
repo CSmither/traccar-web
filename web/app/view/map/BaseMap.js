@@ -205,6 +205,9 @@ Ext.define('Traccar.view.map.BaseMap', {
             maxZoom: maxZoom
         });
 
+        const container = document.getElementById('popup');
+        const content = document.getElementById('popup-content');
+        const closer = document.getElementById('popup-closer');
         /**
          * Add a click handler to hide the popup.
          * @return {boolean} Don't follow the href.

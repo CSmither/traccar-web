@@ -206,18 +206,6 @@ Ext.define('Traccar.view.map.BaseMap', {
         });
 
         /**
-         * Create an overlay to anchor the popup to the map.
-         */
-        const overlay = new Overlay({
-            element: container,
-            autoPan: {
-                animation: {
-                    duration: 250,
-                },
-            },
-        });
-
-        /**
          * Add a click handler to hide the popup.
          * @return {boolean} Don't follow the href.
          */
@@ -230,7 +218,14 @@ Ext.define('Traccar.view.map.BaseMap', {
         this.map = new ol.Map({
             target: this.body.dom.id,
             layers: [layer],
-            overlays: [overlay],
+            overlays: [new ol.Overlay({
+                element: container,
+                autoPan: {
+                    animation: {
+                        duration: 250,
+                    },
+                },
+            })],
             view: this.mapView
         });
 
@@ -238,12 +233,12 @@ Ext.define('Traccar.view.map.BaseMap', {
          * Add a click handler to the map to render the popup.
          */
         this.map.on('singleclick', function (evt) {
-          const coordinate = evt.coordinate;
-          const hdms = coordinate;
-          const wgs84 = new LatLon(...coordinate);
-          const gridref=wgs84.toOsGrid().toString(); // 'TL 44982 57869'
-          content.innerHTML = '<code>' + gridref + '</code>';
-          overlay.setPosition(coordinate);
+            const coordinate = evt.coordinate;
+            const hdms = coordinate;
+            const wgs84 = new LatLon(...coordinate);
+            const gridref = wgs84.toOsGrid().toString(); // 'TL 44982 57869'
+            content.innerHTML = '<code>' + gridref + '</code>';
+            overlay.setPosition(coordinate);
         });
 
         poiLayer = Traccar.app.getPreference('poiLayer', null);

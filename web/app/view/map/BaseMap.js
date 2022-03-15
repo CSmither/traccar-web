@@ -30,7 +30,7 @@ Ext.define('Traccar.view.map.BaseMap', {
     },
 
     initMap: function () {
-        var server, layer, type, bingKey, locationIqKey, lat, lon, zoom, maxZoom, target, poiLayer, self = this;
+        var server, layer, type, bingKey, oskey, locationIqKey, lat, lon, zoom, maxZoom, target, poiLayer, self = this;
 
         server = Traccar.app.getServer();
 

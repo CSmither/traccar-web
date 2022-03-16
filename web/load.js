@@ -173,9 +173,8 @@
     
     // addScriptModuleFile('lib/geodesy/osgridref.js');
     var script = document.createElement('script');
-    script.innerHTML("import LatLon from 'lib/geodesy/osgridref.js';")
+    script.innerHTML="import LatLon from 'lib/geodesy/osgridref.js';"
     script.setAttribute('type', 'module');
-    script.async = false;
     document.head.appendChild(script);
 
     addScriptFile('lib/proj4/proj4.js');

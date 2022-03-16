@@ -35,9 +35,8 @@ Number.prototype.padLZ = function (w) {
     return n;
 }
 
-function LatLongToOSGrid(lon,lat) {
+function LatLongToOSGrid(lon, lat) {
     // Swap lat lon as they seem to be the wron way round?
-    console.log(lat,lon)
     var lat = lat.toRad(), lon = lon.toRad();
     var a = 6377563.396, b = 6356256.910;          // Airy 1830 major & minor semi-axes
     var F0 = 0.9996012717;                         // NatGrid scale factor on central meridian
@@ -76,7 +75,6 @@ function LatLongToOSGrid(lon,lat) {
     var N = I + II * dLon2 + III * dLon4 + IIIA * dLon6;
     var E = E0 + IV * dLon + V * dLon3 + VI * dLon5;
 
-    console.log(E,N)
     return gridrefNumToLet(E, N, 8);
 }
 
@@ -102,7 +100,7 @@ function gridrefNumToLet(e, n, digits) {
     e = Math.floor((e % 100000) / Math.pow(10, 5 - digits / 2));
     n = Math.floor((n % 100000) / Math.pow(10, 5 - digits / 2));
 
-    var gridRef = letPair + e.padLZ(digits / 2) + n.padLZ(digits / 2);
+    var gridRef = letPair + " " + e.padLZ(digits / 2) + " " + n.padLZ(digits / 2);
 
     return gridRef;
 }
@@ -300,9 +298,7 @@ Ext.define('Traccar.view.map.BaseMap', {
         this.mousePositionControl = new ol.control.MousePosition({
             coordinateFormat: function (latlon, accuracy) {
                 const coordinate = latlon;
-                console.log(latlon);
                 const gridref = LatLongToOSGrid(...coordinate);
-                console.log(gridref);
                 return (gridref);
             },
             placeholder: false,

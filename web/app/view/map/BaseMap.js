@@ -210,6 +210,17 @@ Ext.define('Traccar.view.map.BaseMap', {
             layers: [layer],
             view: this.mapView
         });
+        
+        this.mousePositionControl = new ol.control.MousePosition({
+            coordinateFormat: function(latlon,accuracy){
+                return "OS GRID REF";
+            },
+            projection: 'EPSG:27700',
+            // comment the following two lines to have the mouse position
+            // be placed within the map.
+            // className: 'custom-mouse-position',
+            // target: document.getElementById('mouse-position'),
+          });
 
         poiLayer = Traccar.app.getPreference('poiLayer', null);
 

@@ -204,12 +204,6 @@ Ext.define('Traccar.view.map.BaseMap', {
             zoom: zoom,
             maxZoom: maxZoom
         });
-
-        this.map = new ol.Map({
-            target: this.body.dom.id,
-            layers: [layer],
-            view: this.mapView
-        });
         
         this.mousePositionControl = new ol.control.MousePosition({
             coordinateFormat: function(latlon,accuracy){
@@ -221,6 +215,13 @@ Ext.define('Traccar.view.map.BaseMap', {
             // className: 'custom-mouse-position',
             // target: document.getElementById('mouse-position'),
           });
+
+        this.map = new ol.Map({
+            target: this.body.dom.id,
+            layers: [layer],
+            controls: defaultControls().extend([this.mousePositionControl]),
+            view: this.mapView
+        });
 
         poiLayer = Traccar.app.getPreference('poiLayer', null);
 

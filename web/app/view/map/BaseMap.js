@@ -16,7 +16,7 @@
  */
 
 function convertLatLonToOsGrid(lat,lon) {
-    const wgs84 = new LatLon(...coordinate);
+    const wgs84 = new App.xGeodesy.LatLon(...coordinate);
     const gridref = wgs84.toOsGrid().toString(); // 'TL 44982 57869'
     return gridref;
 }

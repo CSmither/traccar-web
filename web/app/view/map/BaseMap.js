@@ -35,7 +35,8 @@ Number.prototype.padLZ = function (w) {
     return n;
 }
 
-function LatLongToOSGrid(lat, lon) {
+function LatLongToOSGrid(lon,lat) {
+    // Swap lat lon as they seem to be the wron way round?
     console.log(lat,lon)
     var lat = lat.toRad(), lon = lon.toRad();
     var a = 6377563.396, b = 6356256.910;          // Airy 1830 major & minor semi-axes

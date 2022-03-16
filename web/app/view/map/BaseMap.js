@@ -299,7 +299,7 @@ Ext.define('Traccar.view.map.BaseMap', {
         this.mousePositionControl = new ol.control.MousePosition({
             coordinateFormat: function (latlon, accuracy) {
                 const coordinate = latlon;
-                const gridref = LatLongToOSGrid(...coordinate, 6);
+                const gridref = LatLongToOSGrid(...coordinate, 8);
                 return (gridref);
             },
             placeholder: false,

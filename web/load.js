@@ -16,6 +16,14 @@
         document.head.appendChild(script);
     }
 
+    function addScriptModuleFile(file) {
+        var script = document.createElement('script');
+        script.setAttribute('src', file);
+        script.setAttribute('type', 'module');
+        script.async = false;
+        document.head.appendChild(script);
+    }
+
     function addSvgFile(file, id) {
         var svg = document.createElement('object');
         svg.setAttribute('id', id);
@@ -173,7 +181,7 @@
     
     addScriptFile('lib/geodesy/osgridref.js');
 
-    addScriptFile('lib/proj4/proj4.js');
+    addScriptModuleFile('lib/proj4/proj4.js');
 
     window.Images = ['arrow', 'default', 'animal', 'bicycle', 'boat', 'bus', 'car', 'crane', 'helicopter', 'motorcycle',
         'offroad', 'person', 'pickup', 'plane', 'ship', 'tractor', 'train', 'tram', 'trolleybus', 'truck', 'van', 'scooter'];

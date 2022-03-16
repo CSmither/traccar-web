@@ -171,7 +171,7 @@
     addStyleFile('lib/ol-layerswitcher/ol-layerswitcher.css');
     addScriptFile('lib/ol-layerswitcher/ol-layerswitcher.js');
     
-    addScriptModuleFile('lib/geodesy/osgridref.js');
+    // addScriptModuleFile('lib/geodesy/osgridref.js');
     var script = document.createElement('script');
     script.innerHTML("import LatLon from 'lib/geodesy/osgridref.js';")
     script.setAttribute('type', 'module');

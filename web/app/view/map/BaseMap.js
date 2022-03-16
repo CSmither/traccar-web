@@ -207,8 +207,12 @@ Ext.define('Traccar.view.map.BaseMap', {
         
         this.mousePositionControl = new ol.control.MousePosition({
             coordinateFormat: function(latlon,accuracy){
-                return "OS GRID REF";
+                const coordinate = latlon;
+                const wgs84 = new osgridref.LatLon(...coordinate);
+                const gridref = wgs84.toOsGrid().toString(); // 'TL 44982 57869'
+                return (gridref);
             },
+            placeholder: false,
             projection: 'EPSG:27700',
             // comment the following two lines to have the mouse position
             // be placed within the map.

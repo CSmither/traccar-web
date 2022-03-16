@@ -20,6 +20,10 @@ body.x-border-layout-ct, div.x-border-layout-ct {
     background-color: #bbbbbb !important;
 }
 
+.ol-mouse-position {
+    background-color: #bbbbbb !important;
+}
+
 .x-fieldset {
     overflow: visible !important; /* workaround for Safari issue */
 }

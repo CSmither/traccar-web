@@ -179,9 +179,9 @@
     addStyleFile('lib/ol-layerswitcher/ol-layerswitcher.css');
     addScriptFile('lib/ol-layerswitcher/ol-layerswitcher.js');
     
-    addScriptFile('lib/geodesy/osgridref.js');
+    addScriptModuleFile('lib/geodesy/osgridref.js');
 
-    addScriptModuleFile('lib/proj4/proj4.js');
+    addScriptFile('lib/proj4/proj4.js');
 
     window.Images = ['arrow', 'default', 'animal', 'bicycle', 'boat', 'bus', 'car', 'crane', 'helicopter', 'motorcycle',
         'offroad', 'person', 'pickup', 'plane', 'ship', 'tractor', 'train', 'tram', 'trolleybus', 'truck', 'van', 'scooter'];

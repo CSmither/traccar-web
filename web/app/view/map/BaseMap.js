@@ -219,7 +219,7 @@ Ext.define('Traccar.view.map.BaseMap', {
         this.map = new ol.Map({
             target: this.body.dom.id,
             layers: [layer],
-            controls: defaultControls().extend([this.mousePositionControl]),
+            controls: ol.control.defaults().extend([this.mousePositionControl]),
             view: this.mapView
         });
 

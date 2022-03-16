@@ -19,3 +19,5 @@ Ext.application({
     name: 'Traccar',
     extend: 'Traccar.Application'
 });
+
+App.xGeodesy = require('geodesy/osgridref');

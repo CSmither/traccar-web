@@ -171,8 +171,6 @@
     addStyleFile('lib/ol-layerswitcher/ol-layerswitcher.css');
     addScriptFile('lib/ol-layerswitcher/ol-layerswitcher.js');
 
-    App.xGeodesy = require('geodesy/osgridref');
-
     addScriptFile('lib/proj4/proj4.js');
 
     window.Images = ['arrow', 'default', 'animal', 'bicycle', 'boat', 'bus', 'car', 'crane', 'helicopter', 'motorcycle',

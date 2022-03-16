@@ -16,14 +16,6 @@
         document.head.appendChild(script);
     }
 
-    function addScriptModuleFile(file) {
-        var script = document.createElement('script');
-        script.setAttribute('src', file);
-        script.setAttribute('type', 'module');
-        script.async = false;
-        document.head.appendChild(script);
-    }
-
     function addSvgFile(file, id) {
         var svg = document.createElement('object');
         svg.setAttribute('id', id);

@@ -15,8 +15,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import LatLon from 'lib/geodesy/osgridref.js';
-
 Ext.define('Traccar.view.map.BaseMap', {
     extend: 'Ext.panel.Panel',
     xtype: 'baseMapView',

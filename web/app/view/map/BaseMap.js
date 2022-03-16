@@ -211,16 +211,6 @@ Ext.define('Traccar.view.map.BaseMap', {
             view: this.mapView
         });
 
-        /**
-         * Add a click handler to the map to render the popup.
-         */
-        this.map.on('singleclick', function (evt) {
-            const coordinate = evt.coordinate;
-            const wgs84 = new LatLon(...coordinate);
-            const gridref = wgs84.toOsGrid().toString(); // 'TL 44982 57869'
-            console.log(gridref);
-        });
-
         poiLayer = Traccar.app.getPreference('poiLayer', null);
 
         if (poiLayer) {

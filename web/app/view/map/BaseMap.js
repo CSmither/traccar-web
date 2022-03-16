@@ -205,30 +205,9 @@ Ext.define('Traccar.view.map.BaseMap', {
             maxZoom: maxZoom
         });
 
-        const container = document.getElementById('popup');
-        const content = document.getElementById('popup-content');
-        const closer = document.getElementById('popup-closer');
-        /**
-         * Add a click handler to hide the popup.
-         * @return {boolean} Don't follow the href.
-         */
-        closer.onclick = function () {
-            overlay.setPosition(undefined);
-            closer.blur();
-            return false;
-        };
-
         this.map = new ol.Map({
             target: this.body.dom.id,
             layers: [layer],
-            overlays: [new ol.Overlay({
-                element: container,
-                autoPan: {
-                    animation: {
-                        duration: 250,
-                    },
-                },
-            })],
             view: this.mapView
         });
 
@@ -237,11 +216,9 @@ Ext.define('Traccar.view.map.BaseMap', {
          */
         this.map.on('singleclick', function (evt) {
             const coordinate = evt.coordinate;
-            const hdms = coordinate;
             const wgs84 = new LatLon(...coordinate);
             const gridref = wgs84.toOsGrid().toString(); // 'TL 44982 57869'
-            content.innerHTML = '<code>' + gridref + '</code>';
-            overlay.setPosition(coordinate);
+            console.log(gridref);
         });
 
         poiLayer = Traccar.app.getPreference('poiLayer', null);

@@ -15,6 +15,10 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+function convertLatLonToOsGrid(coordinate) {
+    return "OS GRID REF";
+}
+
 Ext.define('Traccar.view.map.BaseMap', {
     extend: 'Ext.panel.Panel',
     xtype: 'baseMapView',
@@ -204,12 +208,13 @@ Ext.define('Traccar.view.map.BaseMap', {
             zoom: zoom,
             maxZoom: maxZoom
         });
-        
+
         this.mousePositionControl = new ol.control.MousePosition({
-            coordinateFormat: function(latlon,accuracy){
+            coordinateFormat: function (latlon, accuracy) {
                 const coordinate = latlon;
-                const wgs84 = new LatLon_OsGridRef (...coordinate);
-                const gridref = wgs84.toOsGrid().toString(); // 'TL 44982 57869'
+                const gridref = convertLatLonToOsGrid(coordinate);
+                // const wgs84 = new LatLon(...coordinate);
+                // const gridref = wgs84.toOsGrid().toString(); // 'TL 44982 57869'
                 return (gridref);
             },
             placeholder: false,
@@ -218,7 +223,7 @@ Ext.define('Traccar.view.map.BaseMap', {
             // be placed within the map.
             // className: 'custom-mouse-position',
             // target: document.getElementById('mouse-position'),
-          });
+        });
 
         this.map = new ol.Map({
             target: this.body.dom.id,

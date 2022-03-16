@@ -15,8 +15,12 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-function convertLatLonToOsGrid(coordinate) {
-    return "OS GRID REF";
+import LatLon from 'geodesy/osgridref';
+
+function convertLatLonToOsGrid(lat,lon) {
+    const wgs84 = new LatLon(...coordinate);
+    const gridref = wgs84.toOsGrid().toString(); // 'TL 44982 57869'
+    return gridref;
 }
 
 Ext.define('Traccar.view.map.BaseMap', {
@@ -212,9 +216,7 @@ Ext.define('Traccar.view.map.BaseMap', {
         this.mousePositionControl = new ol.control.MousePosition({
             coordinateFormat: function (latlon, accuracy) {
                 const coordinate = latlon;
-                const gridref = convertLatLonToOsGrid(coordinate);
-                // const wgs84 = new LatLon(...coordinate);
-                // const gridref = wgs84.toOsGrid().toString(); // 'TL 44982 57869'
+                const gridref = convertLatLonToOsGrid(...coordinate);
                 return (gridref);
             },
             placeholder: false,

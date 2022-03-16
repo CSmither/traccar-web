@@ -170,12 +170,6 @@
 
     addStyleFile('lib/ol-layerswitcher/ol-layerswitcher.css');
     addScriptFile('lib/ol-layerswitcher/ol-layerswitcher.js');
-    
-    // addScriptModuleFile('lib/geodesy/osgridref.js');
-    var script = document.createElement('script');
-    script.innerHTML="import LatLon from 'https://cdn.jsdelivr.net/npm/geodesy@2.3.0/osgridref.js';"
-    script.setAttribute('type', 'module');
-    document.head.appendChild(script);
 
     addScriptFile('lib/proj4/proj4.js');
 

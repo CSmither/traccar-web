@@ -15,8 +15,6 @@
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-import LatLon from 'https://cdn.jsdelivr.net/npm/geodesy@2.3.0/osgridref.js';
-
 function convertLatLonToOsGrid(lat,lon) {
     const wgs84 = new LatLon(...coordinate);
     const gridref = wgs84.toOsGrid().toString(); // 'TL 44982 57869'

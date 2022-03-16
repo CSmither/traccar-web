@@ -304,7 +304,7 @@ Ext.define('Traccar.view.map.BaseMap', {
                 return (gridref);
             },
             placeholder: false,
-            projection: 'EPSG:27700',
+            projection: 'EPSG:4326',
             // comment the following two lines to have the mouse position
             // be placed within the map.
             // className: 'custom-mouse-position',

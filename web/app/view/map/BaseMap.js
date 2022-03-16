@@ -76,6 +76,9 @@ function LatLongToOSGrid(lon, lat, accuracy) {
     var N = I + II * dLon2 + III * dLon4 + IIIA * dLon6;
     var E = E0 + IV * dLon + V * dLon3 + VI * dLon5;
 
+    // Hacky correction put in by Smither to make it work :/ I hate this
+    E=E+100
+
     return gridrefNumToLet(E, N, accuracy);
 }
 

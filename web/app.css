@@ -21,7 +21,9 @@ body.x-border-layout-ct, div.x-border-layout-ct {
 }
 
 .ol-mouse-position {
-    background-color: #bbbbbb !important;
+    background-color: #eeeeee !important;
+    padding: 1.5ex !important;
+    font-size: 150% !important;
 }
 
 .x-fieldset {

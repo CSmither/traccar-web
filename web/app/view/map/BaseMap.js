@@ -39,7 +39,8 @@ function LatLongToOSGrid(lon, lat) {
     // Swap lat lon as they seem to be the wron way round?
     var lat = lat.toRad(), lon = lon.toRad();
     var a = 6377563.396, b = 6356256.910;          // Airy 1830 major & minor semi-axes
-    var F0 = 0.9996012717;                         // NatGrid scale factor on central meridian
+    // var F0 = 0.9996012717;                         // NatGrid scale factor on central meridian
+    // var F0 = 0.9996;                         // NatGrid scale factor on central meridian    
     var lat0 = (49).toRad(), lon0 = (-2).toRad();  // NatGrid true origin
     var N0 = -100000, E0 = 400000;                 // northing & easting of true origin, metres
     var e2 = 1 - (b * b) / (a * a);                      // eccentricity squared

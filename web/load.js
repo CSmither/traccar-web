@@ -171,7 +171,7 @@
     addStyleFile('lib/ol-layerswitcher/ol-layerswitcher.css');
     addScriptFile('lib/ol-layerswitcher/ol-layerswitcher.js');
     
-    addScriptFile('https://cdn.jsdelivr.net/npm/geodesy@2/osgridref.js');
+    addScriptFile('lib/geodesy/osgridref.js');
 
     addScriptFile('lib/proj4/proj4.js');
 

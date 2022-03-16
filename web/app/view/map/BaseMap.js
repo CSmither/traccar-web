@@ -36,8 +36,8 @@ Number.prototype.padLZ = function (w) {
 }
 
 function LatLongToOSGrid(lat, lon) {
+    console.log(lat,lon)
     var lat = lat.toRad(), lon = lon.toRad();
-
     var a = 6377563.396, b = 6356256.910;          // Airy 1830 major & minor semi-axes
     var F0 = 0.9996012717;                         // NatGrid scale factor on central meridian
     var lat0 = (49).toRad(), lon0 = (-2).toRad();  // NatGrid true origin
@@ -75,6 +75,7 @@ function LatLongToOSGrid(lat, lon) {
     var N = I + II * dLon2 + III * dLon4 + IIIA * dLon6;
     var E = E0 + IV * dLon + V * dLon3 + VI * dLon5;
 
+    console.log(E,N)
     return gridrefNumToLet(E, N, 8);
 }
 

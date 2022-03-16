@@ -78,6 +78,7 @@ function LatLongToOSGrid(lon, lat, accuracy) {
 
     // Hacky correction put in by Smither to make it work :/ I hate this
     E=E+100
+    N=N-18
 
     return gridrefNumToLet(E, N, accuracy);
 }

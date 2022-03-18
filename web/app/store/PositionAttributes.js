@@ -172,10 +172,6 @@ Ext.define('Traccar.store.PositionAttributes', {
         valueType: 'number',
         dataType: 'distance'
     }, {
-        key: 'osGridRef',
-        name: Strings.osGridRef,
-        valueType: 'string'
-    }, {
         key: 'rpm',
         name: Strings.positionRpm,
         valueType: 'number'

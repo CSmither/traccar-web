@@ -127,6 +127,7 @@ Ext.define('Traccar.view.DeviceMenuController', {
         position = Ext.getStore('LatestPositions').findRecord('deviceId', dialog.deviceId, 0, false, false, true);
         if (position) {
             dialog.lookupReference('totalDistance').setValue(position.get('attributes').totalDistance);
+            dialog.lookupReference('osGridRef').setValue(position.get('attributes').osGridRef);
             dialog.lookupReference('hours').setValue(position.get('attributes').hours);
         }
         dialog.show();

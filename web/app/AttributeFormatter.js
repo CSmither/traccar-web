@@ -83,6 +83,7 @@ Ext.define('Traccar.AttributeFormatter', {
                     console.log("STILL NO DEVICES LISTED!!")
                     store = Ext.getStore('AllDevices')
                     store.load();
+                    await new Promise(r => setTimeout(r, 2000));
                     if (store.getTotalCount() === 0) {
                         console.log("STILL STILL NO DEVICES LISTED!!!")
                     }

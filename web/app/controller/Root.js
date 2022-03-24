@@ -196,6 +196,7 @@ Ext.define('Traccar.controller.Root', {
             scope: this,
             callback: function () {
                 this.asyncUpdate(true);
+                Ext.getStore('Events').load();
             }
         });
         updateView = Ext.get('update');

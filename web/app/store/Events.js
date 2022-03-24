@@ -30,7 +30,8 @@ Ext.define('Traccar.store.Events', {
                 property: 'acknowledged',
                 value   : 'false'
             })
-        ]
+        ],
+        remoteFilter: true,
     },
     autoLoad: true
 });

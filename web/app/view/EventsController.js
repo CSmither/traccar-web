@@ -55,6 +55,7 @@ Ext.define('Traccar.view.EventsController', {
         event = this.getView().getSelectionModel().getSelection()[0];
         if (event) {
             Ext.getStore('Events').remove(event);
+            Ext.getStore('Events').sync();
             positionId = event.get('positionId');
             if (positionId && !Ext.getStore('Events').findRecord('positionId', positionId, 0, false, false, true)) {
                 Ext.getStore('EventPositions').remove(Ext.getStore('EventPositions').getById(positionId));
@@ -65,6 +66,7 @@ Ext.define('Traccar.view.EventsController', {
     onClearClick: function () {
         Ext.getStore('Events').removeAll();
         Ext.getStore('EventPositions').removeAll();
+        Ext.getStore('Events').sync();
     },
 
     onAddEvent: function () {

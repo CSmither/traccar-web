@@ -122,3 +122,17 @@ export const getBatteryStatus = (batteryLevel) => {
   }
   return 'red';
 };
+
+export const getTimeRecent = (time) => {
+  var lapsedSeconds = (Date.now() - Date.parse(time)) / 1000;
+  if (lapsedSeconds < 300) {
+    return 'green';
+  }
+  if (lapsedSeconds < 1800) {
+    return 'orange';
+  }
+  if (lapsedSeconds < 21600) {
+    return 'red';
+  }
+  return 'gray';
+}

@@ -194,6 +194,10 @@ Ext.define('Traccar.AttributeFormatter', {
         return Ext.Date.format(value, Traccar.Style.dateFormat);
     },
 
+    acknowledgeFormatter: function (value) {
+        return value;
+    },
+
     getFormatter: function (key) {
         var self = this;
 
@@ -230,6 +234,8 @@ Ext.define('Traccar.AttributeFormatter', {
                 return this.driverUniqueIdFormatter;
             case 'commandType':
                 return this.commandTypeFormatter;
+            case 'acknowledged':
+                return this.acknowledgeFormatter;
             default:
                 return this.defaultFormatter;
         }

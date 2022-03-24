@@ -112,6 +112,10 @@ Ext.define('Traccar.view.Events', {
             text: Strings.positionFixTime,
             dataIndex: 'eventTime',
             renderer: Traccar.AttributeFormatter.getFormatter('eventTime')
+        }, {
+            text: "Acknowledge",
+            dataIndex: 'acknowledged',
+            renderer: Traccar.AttributeFormatter.getFormatter('acknowledged')
         }]
     }
 });

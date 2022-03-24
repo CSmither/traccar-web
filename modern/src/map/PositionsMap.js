@@ -9,6 +9,7 @@ import { map } from './Map';
 import store from '../store';
 import StatusView from './StatusView';
 import theme from '../theme';
+import {getTimeRecent} from '../common/formatter';
 
 const PositionsMap = ({ positions }) => {
   const id = 'positions';
@@ -18,14 +19,15 @@ const PositionsMap = ({ positions }) => {
   const devices = useSelector((state) => state.devices.items);
 
   const deviceColor = (device) => {
-    switch (device.status) {
-      case 'online':
-        return 'green';
-      case 'offline':
-        return 'red';
-      default:
-        return 'gray';
-    }
+    return getTimeRecent(device.lastUpdate);
+    // switch (device.status) {
+    //   case 'online':
+    //     return 'green';
+    //   case 'offline':
+    //     return 'red';
+    //   default:
+    //     return 'gray';
+    // }
   };
 
   const createFeature = (devices, position) => {

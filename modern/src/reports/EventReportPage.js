@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DataGrid } from '@material-ui/data-grid';
 import {
-  Grid, FormControl, InputLabel, Select, MenuItem,
+  Grid, FormControl, InputLabel, Select, MenuItem, Button,
 } from '@material-ui/core';
 import { useTheme } from '@material-ui/core/styles';
 import { useSelector } from 'react-redux';
@@ -16,11 +16,14 @@ const Filter = ({ setItems }) => {
 
   const [eventTypes, setEventTypes] = useState(['allEvents']);
 
+  const [acknowledgeType, setAcknowledgeType] = useState([""]);
+
   const handleSubmit = async (deviceId, from, to, mail, headers) => {
     const query = new URLSearchParams({
-      deviceId, from, to, mail,
+      deviceId, from, to, mail
     });
     eventTypes.forEach((it) => query.append('type', it));
+    query.append('acknowledged', acknowledgeType);
     const response = await fetch(`/api/reports/events?${query.toString()}`, { headers });
     if (response.ok) {
       const contentType = response.headers.get('content-type');
@@ -37,6 +40,14 @@ const Filter = ({ setItems }) => {
   return (
     <ReportFilter handleSubmit={handleSubmit}>
       <Grid item xs={12} sm={6}>
+        <FormControl variant="filled" fullWidth>
+          <InputLabel>{"Acknowledged"}</InputLabel>
+          <Select value={acknowledgeType} onChange={(e) => setAcknowledgeType(e.target.value)}>
+            <MenuItem value="">{" "}</MenuItem>
+            <MenuItem value="true">{"Acknowledged"}</MenuItem>
+            <MenuItem value="false">{"Not Acknowledged"}</MenuItem>
+          </Select>
+        </FormControl>
         <FormControl variant="filled" fullWidth>
           <InputLabel>{t('reportEventTypes')}</InputLabel>
           <Select value={eventTypes} onChange={(e) => setEventTypes(e.target.value)} multiple>
@@ -83,7 +94,7 @@ const EventReportPage = () => {
 
   const columns = [{
     headerName: t('positionFixTime'),
-    field: 'serverTime',
+    field: 'eventTime',
     type: 'dateTime',
     width: theme.dimensions.columnWidthDate,
     valueFormatter: ({ value }) => formatDate(value),
@@ -102,6 +113,33 @@ const EventReportPage = () => {
     headerName: t('sharedMaintenance'),
     field: 'maintenanceId',
     type: 'number',
+    width: theme.dimensions.columnWidthString,
+  }, {
+    headerName: "alarmtype",
+    field: "alarmType",
+    valueGetter: (params) => params.row.attributes.alarm || "",
+    type: 'string',
+    width: theme.dimensions.columnWidthString,
+  }, {
+    headerName: "Actions",
+    field: "actions",
+    renderCell: (cellValues) => {
+      if (!cellValues.row.acknowledged) {
+        return (<Button
+          variant="contained"
+          color="secondary"
+          onClick={(event) => {
+            const accept = 'application/json';
+            fetch(`/api/events/${cellValues.id}/ack`, { method: 'POST', Accept: "application/json" });
+          }}
+        >
+          Resolve
+        </Button>);
+      } else {
+        return "Closed";
+      }
+    },
+    type: 'string',
     width: theme.dimensions.columnWidthString,
   }];
 

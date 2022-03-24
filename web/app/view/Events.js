@@ -92,7 +92,11 @@ Ext.define('Traccar.view.Events', {
     },
 
     listeners: {
-        selectionchange: 'onSelectionChange'
+        selectionchange: 'onSelectionChange',
+        afterrender: {
+            element: 'div',
+            fn: function () { Ext.getStore('AllDevices').load(); Ext.getStore('Events').load() }
+        },
     },
 
     columns: {

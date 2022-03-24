@@ -77,7 +77,11 @@ Ext.define('Traccar.AttributeFormatter', {
         if (value !== 0) {
             store = Ext.getStore('AllDevices');
             if (store.getTotalCount() === 0) {
+                console.log("NO DEVICES LISTED")
                 store = Ext.getStore('Devices');
+                if (store.getTotalCount() === 0) {
+                    console.log("STILL NO DEVICES LISTED!!")
+                }
             }
             device = store.getById(value);
             return device ? device.get('name') : '';

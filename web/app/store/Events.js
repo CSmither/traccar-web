@@ -25,4 +25,5 @@ Ext.define('Traccar.store.Events', {
         url: 'api/events',
         extraParams: { 'acknowledged': 'false' },
     },
+    autoLoad: true
 });

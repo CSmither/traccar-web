@@ -23,6 +23,7 @@ Ext.define('Traccar.store.Commands', {
     proxy: {
         type: 'rest',
         url: 'api/commands',
+        extraParams: { 'refresh': '' },
         writer: {
             writeAllFields: true
         }

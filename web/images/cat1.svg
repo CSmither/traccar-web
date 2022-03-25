@@ -6,8 +6,8 @@
    xmlns:dc="http://purl.org/dc/elements/1.1/" viewBox="0 0 40 40">
    <g id="layer1">
       <path id="background" d="m 20.002,3.6816 -1.131,3.3907 a 12.374,12.374 0 0 1 1.131,-0.0625 12.374,12.374 0 0 1 1.129,0.0566 z M 20,7.625 A 12.374,12.374 0 0 0 7.625,20 12.374,12.374 0 0 0 20,32.375 12.374,12.374 0 0 0 32.375,20 12.374,12.374 0 0 0 20,7.625 Z" stroke="#333333" stroke-width="1.9" fill="#008000" />
-      <text id="text839" y="28.266998" x="11.956295" style="font-style:normal;font-weight:normal;font-size:22.8344px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.999998">
-         <tspan style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.8344px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.999998" y="28.266998" x="11.956295" id="tspan837">1</tspan>
+      <text style="font-style:normal;font-weight:normal;font-size:22.8344px;line-height:1.25;font-family:sans-serif;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.999998" x="26.86816" y="28.45133" id="text839">
+         <tspan id="tspan837" x="20" y="28.45133" style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:22.8344px;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;stroke-width:0.999998">1</tspan>
       </text>
    </g>
 </svg>

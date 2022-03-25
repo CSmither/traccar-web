@@ -173,11 +173,12 @@
 
     addScriptFile('lib/proj4/proj4.js');
 
-    window.Images = ['arrow', 'default', 'animal', 'bicycle', 'boat', 'bus', 'car', 'crane', 'helicopter', 'motorcycle',
-        'offroad', 'person', 'pickup', 'plane', 'ship', 'tractor', 'train', 'tram', 'trolleybus', 'truck', 'van', 'scooter',
+    window.Images = ['arrow', 'default', 'animal', 'bicycle', 'boat', 'bus', 'car',
         'cat1', 'cat2', 'cat3', 'cat4', 'cat5', 'cat6', 'cat7', 'cat8', 'cat9', 'cat0',
         'catA', 'catB', 'catC', 'catD', 'catE', 'catF', 'catG', 'catH', 'catI', 'catJ', 'catK', 'catL', 'catM',
-        'catN', 'catO', 'catP', 'catQ', 'catR', 'catS', 'catT', 'catU', 'catV', 'catW', 'catX', 'catY', 'catZ'];
+        'catN', 'catO', 'catP', 'catQ', 'catR', 'catS', 'catT', 'catU', 'catV', 'catW', 'catX', 'catY', 'catZ',
+        'crane', 'helicopter', 'motorcycle', 'offroad', 'person', 'pickup', 'plane', 'ship', 'tractor',
+        'train', 'tram', 'trolleybus', 'truck', 'van', 'scooter'];
 
     for (i = 0; i < window.Images.length; i++) {
         addSvgFile('images/' + window.Images[i] + '.svg', window.Images[i] + 'Svg');

@@ -146,7 +146,7 @@ Ext.define('Traccar.view.StateController', {
                         value = Traccar.AttributeFormatter.defaultFormatter(attributes[key]);
                     }
                     store.add(Ext.create('Traccar.model.Attribute', {
-                        priority: 1024,
+                        priority: this.keys[key]?this.keys[key].priority:1024,
                         name: name,
                         attribute: key,
                         value: value
